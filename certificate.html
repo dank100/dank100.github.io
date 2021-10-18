@@ -1,0 +1,24 @@
+---
+layout: default
+title: Certificates
+type: page
+lang: en
+lang-ref: cert
+---
+{% assign filtered_posts = site.posts | where: 'tag', "cert"%}
+{% assign poststet = filtered_posts | where: 'lang', page.lang %}
+
+<h1>Certificates</h1>
+<hr>
+{% for post in poststet %}
+    <a href="{{ post.url }}" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">{{ post.title }}</h3>
+            <small class="postedon" datetime="{{ post.date | date: '%B %d, %Y' }}">
+                    Posted <span class="postedago"></span>
+                    on {{ post.date | date: "%B %-d, %Y" }}
+            </small>
+        </div>    
+        <p class="mb-1">{{ post.excerpt }}</p>
+    </a>
+{% endfor %}
